@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{xiao:$site_title}</title>
+<meta name="keywords" content="{xiao:$site_keywords}" />
+<meta name="description" content="{xiao:$site_description}" />
+<script type="text/javascript" src="/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="{xiao:$site_template}images/jquery.SuperSlide.2.1.1.js"></script>
+<link rel="stylesheet"  href="{xiao:$site_template}images/css.css" type="text/css"/>
+<!-- 下面列举了模板里面几个常用的标签
+{xiao:$site_url} - 网站的网址
+{xiao:$site_name}-网站名称
+{xiao:$site_title} -标题 如果您不满意系统提供的标题组合方式完全可以自己写 如列表页{xiao:catname} 表示栏目标题
+{xiao:$site_keywords} - {关键字}
+{xiao:$site_description} - {描述}
+{xiao:$site_template} - {当前网站模板目录}
+更多内容请参考官方帮助文档
+-->
+
+
+</head>
+<body> 
+<!-- header-->
+<div class="header">
+	<a href="{xiao:$site_url}" title="{xiao:$site_name}"><h1 class="logo"></h1></a>
+	<div class="txt"><script type="text/javascript" src="{xiao:function.url('api/user')}"></script></div>
+	<div class="tel">电话：<span>400-800-8888</span></div>
+</div>
+
+<div class="nav-bg">
+		<ul id="nav" class="nav clearfix">
+			<li class="nLi">
+				<h3><a href="{xiao:$site_url}">网站首页</a></h3>
+			</li>
+			<!--下面的栏目调用 适合N级栏目调用 循环返回值是$xiao 所以输出为 {xiao:$xiao[xxx]}具体参考官方帮助文档-->
+			
+			{xiao:nav num=7}
+						<li class="nLi {xiao:if $current}on{/xiao:if}">
+						
+						<h3><a href="{xiao:$xiao['url']}">{xiao:$xiao['catname']}</a></h3>
+						
+						{xiao:if  $xiao['child']}<!--判断如果存在下级栏目 如果存在则执行下面的代码-->
+						<ul class="sub">
+		     	{xiao:nav parentid=$xiao[catid] }
+						<li><a href="{xiao:$xiao['url']}">{xiao:$xiao['catname']}</a></li>
+		    	{/xiao:nav}
+						</ul>
+						{/xiao:if}
+						
+						</li>
+			{/xiao:nav}
+			
+		</ul>
+<script  type="text/javascript">
+jQuery("#nav").slide({ type:"menu", titCell:".nLi", targetCell:".sub",effect:"slideDown",delayTime:300,triggerTime:0,returnDefault:true});
+</script>
+</div>
+
+<div class="nav-bg-bottom clear"></div>
+
+<div class="banner">
+<!--调用区块代码就简单了 后面跟着的就是区块ID 一看便知-->
+		<div id="slideBox" class="slideBox">
+			<div class="hd">
+				<ul><li>1</li><li>2</li><li>3</li></ul>
+			</div>
+			<div class="bd">
+				<ul>
+					<li><a href="" target="_blank"><img src="{xiao:block 1}" /></a></li>
+					<li><a href="" target="_blank"><img src="{xiao:block 2}" /></a></li>
+					<li><a href="" target="_blank"><img src="{xiao:block 3}" /></a></li>
+				</ul>
+			</div>
+
+			<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+			<a class="prev" href="javascript:void(0)"></a>
+			<a class="next" href="javascript:void(0)"></a>
+
+		</div>
+
+		<script id="jsID" type="text/javascript">
+		jQuery(".slideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true,delayTime:1000,interTime:4000});
+		</script>
+</div>
+
+<div class="blank20 clear"></div>

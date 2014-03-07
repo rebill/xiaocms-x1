@@ -1,0 +1,35 @@
+{xiao:template header.html}
+<div class="mainbody">
+	<div class="w210 fl">
+	{xiao:template left.html}
+	</div>
+	<div class="w740 fr">
+		<div class="page bg">
+		<div class="newstitle">您当前位置：<a  href="{xiao:$site_url}">首页</a> >> "{xiao:$kw}" 搜索结果</div>
+		<div class="blank10 clear"></div>
+
+            <!--list begin-->
+		    <div class="newslist">
+			    <ul class="noborder">
+                {xiao:if empty($searchnum)}
+				<h3>抱歉，没有找到“{xiao:$kw}”相关的内容。</h3>
+                {xiao:else}
+                    {xiao:loop $searchdata $t}
+                <li><span class="date">{xiao:function.date("Y-m-d", $t['inputtime'])}</span> <a href="{xiao:$t['url']}">· {xiao:$t['title']}</a></li>
+                    {/xiao:loop}
+                {/xiao:if}
+                </ul>
+                <div class="listpage" >{xiao:$pagelist}</div>
+		   </div>
+	       <!--list end-->
+	
+		</div>
+
+		<div class="clear"></div>
+	</div>
+	<div class="blank10 clear"></div>
+
+
+</div>
+
+{xiao:template footer.html}

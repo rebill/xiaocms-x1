@@ -1,0 +1,21 @@
+{xiao:template header.html}
+
+<div class="mainbody">
+	<div class="w210 fl">
+	{xiao:template left.html}
+	</div>
+	<div class="w740 fr">
+		<div class="page bg">
+		<div class="newstitle">您当前位置：<a  href="{xiao:$site_url}">首页</a> >> {xiao:function.position($catid, ' &gt;&gt;&nbsp;&nbsp;')}</div>
+		<div class="blank10 clear"></div>	
+             <div class="content">{xiao:$content}</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+	<div class="blank10 clear"></div>
+
+
+</div>
+
+{xiao:template footer.html}

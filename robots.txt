@@ -1,0 +1,11 @@
+#
+# robots.txt for XiaoCMS
+#
+User-agent: * 
+Disallow: /admin/
+Disallow: /core/
+Disallow: /data/
+Disallow: /img/
+Disallow: /template/
+Disallow: /index.php?s=member*
+Disallow: /index.php?c=api*

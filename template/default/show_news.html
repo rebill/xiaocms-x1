@@ -1,0 +1,60 @@
+{xiao:template header.html}
+
+<div class="mainbody">
+	<div class="w210 fl">
+	{xiao:template left.html}
+	</div>
+	<div class="w740 fr">
+		<div class="page bg">
+                    <div class="newstitle">您当前位置：<a  href="{xiao:$site_url}">首页</a> >> {xiao:function.position($catid, ' &gt;&gt;&nbsp;&nbsp;')}</div>
+                    <div class="blank10 clear"></div>	
+                    <h2>{xiao:$title}</h2> 
+                    <div class="info">时间：{xiao:function.date("Y-m-d H:i:s", $inputtime)} 点击：<script type="text/javascript" src="{xiao:function.url('api/hits',array('id'=>$id))}"></script>次</div>
+                    <div class="content">{xiao:$content}</div>
+                    <div class="blank10 clear"></div>	
+			 		<!--文章内容分页 begin-->
+                    {xiao:if $content_page}
+                    <div class="listpage">
+                    {xiao:loop $content_page $t=>$u}
+                    <a{xiao:if $page!=$t} href="{xiao:$u}"{xiao:else} style="background-color: #c00;"{/xiao:if}>{xiao:$t}</a>
+                    {/xiao:loop}
+                    </div>
+                    <div class="clear blank10"></div>
+                    {/xiao:if}
+					<!--文章内容分页 end-->
+                   {xiao:if $prev_page}<p>上一篇：<a href="{xiao:$prev_page['url']}">{xiao:$prev_page['title']}</a> </p>{/xiao:if}
+                    <div class="blank5 clear"></div>
+                   {xiao:if $next_page}<p>下一篇：<a href="{xiao:$next_page['url']}">{xiao:$next_page['title']}</a> </p>{/xiao:if}
+
+	   </div>
+ 	<div class="blank20 clear"></div>
+	<div class="bg">
+	<h2>评论-关联表单调用演示用它来扩展多种类型表单 比如产品订购等</h2><br/><br/>
+                {xiao:list table=form_comment cid=$id order=inputtime}
+                {xiao:$xiao[pinglunneirong]}<br/><br/>
+                {/xiao:list}</div>
+	<div class="blank20 clear"></div>
+
+<form action="{xiao:function.url('index/form', array('modelid'=>4, 'cid'=>$id))}" method="post">
+			<table width="100%" class="bg ">
+			<tr>
+				<td ><h3>评论内容：</h3></td>
+			</tr>
+			<tr><td><textarea class="pinglunneirong" name="data[pinglunneirong]"></textarea></td></tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td style="border:none"><input type="submit" class="button" value="提 交" name="submit"></td>
+			</tr>
+			</table>
+</form>
+
+		<div class="clear"></div>
+	</div>
+	<div class="blank10 clear"></div>
+
+
+</div>
+
+{xiao:template footer.html}

@@ -1,0 +1,26 @@
+		<!--底部信息-->
+	<div class="clear blank10"></div>
+    <div class="footer">
+        <div class="footnav">
+        <a href="{xiao:$site_url}">首页</a>
+<!--注意 当啥参数都不写的时候 nav后面需要跟两个空格-->
+		{xiao:nav  }
+		<a href="{xiao:$xiao['url']}">{xiao:$xiao['catname']}</a>
+		{/xiao:nav}
+			
+		<a href="http://www.xiaocms.com" target="_blank">技术支持</a>
+        </div>  
+        <div style="text-align:center">
+		<form method="Get" action="" >
+		<input type="hidden"  value="index"  name="c" />
+		<input type="hidden"  value="search"  name="a" />
+
+		<input type="text"  value=""  name="kw" />
+<!--搜索指定栏目		<input type="hidden"  value="1"  name="catid" />-->
+		<input type="submit"   value="搜索展示"   />
+        </form>
+		</div>
+       <div class="copyright">Powered by {xiao:php echo XIAOCMS_VERSION;}  © 2014</div>
+    </div>
+</body>
+</html>

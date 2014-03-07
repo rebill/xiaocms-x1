@@ -1,0 +1,69 @@
+{xiao:template header.html}
+ 
+<div class="mainbody">
+
+
+	<div class="w740 fl">
+		<!-- indexnewslist-->
+		<div class="newwarp bg">
+			<div class="newstitle"><h3>{xiao:$cats[3][catname]}</h3><a href="{xiao:$cats[3][url]}" class="more">更多&gt;&gt;</a></div>
+			{xiao:list catid=3 status=2  num=1}
+			<div class="newsfocus">
+			<div><a href="{xiao:$xiao['url']}"><img src="{xiao:function.thumb($xiao[thumb])}" /></a></div>
+				<h3><a href="{xiao:$xiao['url']}" title="{xiao:$xiao['title']}">{xiao:function.strcut($xiao[title],34)}</a></h3>
+				<p>{xiao:function.strcut($xiao[description],80)} </p>
+			</div>
+			{/xiao:list}
+
+			<ul class="indexnewslist">
+			{xiao:list catid=3 order=inputtime num=3}
+				<li><span>{xiao:function.date("Y-m-d", $xiao['inputtime'])}</span>· <a href="{xiao:$xiao['url']}">{xiao:function.strcut($xiao[title],34,'')}</a></li>
+			{/xiao:list}
+			</ul>
+		</div>
+		<!-- /indexnewslist-->
+		<!-- aboutus-->
+		<div class="aboutus bg">
+			<div class="newstitle"><h3>{xiao:$cats[1][catname]}</h3><a href="{xiao:$cats[1][url]}" class="more">更多&gt;&gt;</a></div>
+			<div class="blank10 clear"></div>
+			{xiao:block 5}
+		</div>
+		<!-- /aboutus-->
+		<div class="clear"></div>
+	</div>
+	<div class="w210 fr">
+		<div class="contact bg">
+			<div class="newstitle"><h3>联系我们</h3></div>
+			<div class="blank10 clear"></div>
+			<div class="contactus">{xiao:block 4}</div>
+		</div>
+	</div>
+	<div class="blank10 clear"></div>
+
+			<div class="picMarquee-left bg">
+			<div class="hd">
+			<h3>产品展示</h3>
+				<a class="next"></a>
+				<a class="prev"></a>
+			</div>
+			<div class="bd">
+				<ul class="picList">
+					{xiao:list catid=5  num=10  cache=36000}
+					<li>
+						<div class="pic"><a href="{xiao:$xiao['url']}" target="_blank"><img src="{xiao:function.thumb($xiao[thumb])}" /></a></div>
+						<div class="title"><a href="{xiao:$xiao['url']}" target="_blank">{xiao:function.strcut($xiao[title],30)}</a></div>
+					</li>
+					{/xiao:list}
+				</ul>
+			</div>
+		</div>
+
+		<script  type="text/javascript">
+		jQuery(".picMarquee-left").slide({mainCell:".bd ul",autoPlay:true,effect:"leftMarquee",vis:6,interTime:50,trigger:"click"});
+		</script>
+<div class="blank10 clear"></div>
+
+<div  class="link bg">友情连接：{xiao:block 6}</div>
+</div>
+
+{xiao:template footer.html}
